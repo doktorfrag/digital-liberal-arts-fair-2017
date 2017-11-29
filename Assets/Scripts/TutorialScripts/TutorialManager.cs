@@ -30,6 +30,7 @@ public class TutorialManager : MonoBehaviour {
     {
         _labBackDoor = GameObject.FindGameObjectWithTag("LabBackDoor");
         GameObject.Find("SceneLoadTrigger").GetComponent<MeshCollider>().enabled = false;
+        DontDestroyOnLoad(_labBackDoor);
     }
 
     private int _tutorialStage = 0;
@@ -84,7 +85,7 @@ public class TutorialManager : MonoBehaviour {
             _teleportCount += value;
             if (TutorialStage == 6)
             {
-                if(TeleportCount > 4)
+                if(TeleportCount > 2)
                 {
                     TutorialStage = 1;
                 }

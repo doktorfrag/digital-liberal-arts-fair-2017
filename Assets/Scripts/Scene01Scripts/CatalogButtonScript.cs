@@ -2,7 +2,6 @@
 using UnityEngine.UI;
 using VRTK;
 using VRTK.GrabAttachMechanics;
-using VRTK.SecondaryControllerGrabActions;
 
 public class CatalogButtonScript : MonoBehaviour {
 
@@ -16,13 +15,22 @@ public class CatalogButtonScript : MonoBehaviour {
     //private variables
     public Button _thisButton;
     private UI_CatalogManager _catalogList;
+    private Vector3 _room1pos;
+    private Vector3 _room2pos;
 
     // methods
     void Start ()
     {
+        //populate catalog
         _thisButton = gameObject.GetComponent(typeof(Button)) as Button;
         _thisButton.GetComponentInChildren<Text>().text = resourceTitle;
         _thisButton.onClick.AddListener(HandleClick);
+
+        //get position of rooms for later art instantiation
+        GameObject room1 = GameObject.Find("Room 1");
+        GameObject room2 = GameObject.Find("Room 2");
+        _room1pos = room1.transform.position;
+        _room2pos = room2.transform.position;
     }
 
     void HandleClick()
@@ -40,7 +48,6 @@ public class CatalogButtonScript : MonoBehaviour {
         GameObject art = Instantiate(Resources.Load(artPath)) as GameObject;
         art.AddComponent<VRTK_InteractableObject>();
         art.AddComponent<VRTK_FixedJointGrabAttach>();
-        art.AddComponent<VRTK_SwapControllerGrabAction>();
         art.AddComponent<Rigidbody>();
         art.AddComponent<PictureScript>();
 
@@ -49,9 +56,16 @@ public class CatalogButtonScript : MonoBehaviour {
         art.GetComponent<VRTK_InteractableObject>().isGrabbable = true;
         art.GetComponent<VRTK_InteractableObject>().stayGrabbedOnTeleport = true;
         art.GetComponent<VRTK_InteractableObject>().grabAttachMechanicScript = art.GetComponent<VRTK_FixedJointGrabAttach>();
-        art.GetComponent<VRTK_InteractableObject>().secondaryGrabActionScript = art.GetComponent<VRTK_SwapControllerGrabAction>();
 
-        //insert into scene
-        art.transform.position = new Vector3(0, 1, 0);
+        //insert art into scene
+        if(roomNumber == "Room 1")
+        {
+            art.transform.position = new Vector3 (_room1pos.x, _room1pos.y + 1.3f, _room1pos.z);
+        }
+
+        if (roomNumber == "Room 2")
+        {
+            art.transform.position = new Vector3(_room2pos.x, _room2pos.y + 1.3f, _room2pos.z);
+        }
     }
 }

@@ -80,4 +80,12 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public void RefreshCatalog()
+    {
+        foreach (CatalogEntry entry in _catalog)
+        {
+            entry.resourceDisplayed = false;
+        }
+    }
+
 }

@@ -42,9 +42,17 @@ public class GCIEL_LeftControllerScript : MonoBehaviour
 
             if (TutorialManager.Instance.TutorialStage == 8 && hit.transform.name == "SceneLoadTrigger")
             {
-                //TutorialManager.Instance.TutorialStage = 0;
-                Destroy(TutorialManager.Instance);
+
                 SceneManager.LoadScene("scene_01", LoadSceneMode.Single);
+
+                //reset Tutorial Manager
+                int currentStage = TutorialManager.Instance.TutorialStage;
+                int currentTeleportCount = TutorialManager.Instance.TeleportCount;
+                int currentSphereCount = TutorialManager.Instance.SphereCount;
+                TutorialManager.Instance.TutorialStage = -currentStage;
+                TutorialManager.Instance.TeleportCount = -currentTeleportCount;
+                TutorialManager.Instance.SphereCount = -currentSphereCount;
+                TutorialManager.Instance.DoorOpen = false;
             }
         }
     }
