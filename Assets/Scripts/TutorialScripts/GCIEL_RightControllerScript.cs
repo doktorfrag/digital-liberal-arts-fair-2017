@@ -1,15 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using VRTK;
 
+//Right controller in charge of interacting with objects in tutorial
 public class GCIEL_RightControllerScript : MonoBehaviour
 {
     //private class variables
     private bool _sphereTargeted = false;
     private GameObject _targetSphere;
-
-    //public class variables
 
     private void Start()
     {
@@ -32,6 +29,8 @@ public class GCIEL_RightControllerScript : MonoBehaviour
         GetComponent<VRTK_ControllerEvents>().TriggerReleased += new ControllerInteractionEventHandler(DoTriggerReleased);
     }
 
+    //Event handlers for interactring with sphere objects
+    //In future: move logic to SphereScript.cs
     private void DoPointerIn(object sender, DestinationMarkerEventArgs e)
     {
         if(e.target.transform.tag == "Sphere")

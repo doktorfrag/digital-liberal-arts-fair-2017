@@ -1,7 +1,8 @@
-﻿using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine.SceneManagement;
+using UnityEngine;
 using VRTK;
 
+//Left controller in charge of teleporting in tutorial
 public class GCIEL_LeftControllerScript : MonoBehaviour
 {
     //private class variables
@@ -32,7 +33,6 @@ public class GCIEL_LeftControllerScript : MonoBehaviour
 
     private void Update()
     {
-
         //always find and report current position
         RaycastHit hit;
 
@@ -40,12 +40,9 @@ public class GCIEL_LeftControllerScript : MonoBehaviour
         {
             _currentPosition = hit.transform.position;
 
-            if (TutorialManager.Instance.TutorialStage == 8 && hit.transform.name == "SceneLoadTrigger")
+            if (TutorialManager.Instance.TutorialStage == 9 && hit.transform.name == "SceneLoadTrigger")
             {
-
-                SceneManager.LoadScene("scene_01", LoadSceneMode.Single);
-
-                //reset Tutorial Manager
+                //reset TutorialManager.cs before leaving tutorial
                 int currentStage = TutorialManager.Instance.TutorialStage;
                 int currentTeleportCount = TutorialManager.Instance.TeleportCount;
                 int currentSphereCount = TutorialManager.Instance.SphereCount;
@@ -53,10 +50,13 @@ public class GCIEL_LeftControllerScript : MonoBehaviour
                 TutorialManager.Instance.TeleportCount = -currentTeleportCount;
                 TutorialManager.Instance.SphereCount = -currentSphereCount;
                 TutorialManager.Instance.DoorOpen = false;
+                SceneManager.LoadScene("scene_01", LoadSceneMode.Single);
+                Debug.Log(TutorialManager.Instance.TutorialStage);
             }
         }
     }
 
+    //Event handler and logic for handling teleporting
     private void DoTouchpadReleased(object sender, ControllerInteractionEventArgs e)
     {
         if(TutorialManager.Instance.TutorialStage == 6)

@@ -33,6 +33,10 @@ public class GameController : MonoBehaviour
     }
 
     //methods
+    private void Awake()
+    {
+        DontDestroyOnLoad(this.gameObject);
+    }
 
     //method to read in entire TXT file for catalog on initialization
     private void ReadDataFile()

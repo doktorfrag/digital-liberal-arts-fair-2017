@@ -2,9 +2,7 @@ Room 1,Picture 1,False,A dark grey picture with white print,file.prefab
 Room 1,Picture 2,False,A light grey picture with black print,file.prefab
 Room 1,Picture 3,False,A dark grey picture with white print,file.prefab
 Room 1,Picture 4,False,A light grey picture with black print,file.prefab
-Room 1,Statue 1,False,A simple white statue,file.prefab
 Room 2,Picture 1,False,A dark grey picture with white print,file.prefab
 Room 2,Picture 2,False,A light grey picture with black print,file.prefab
 Room 2,Picture 3,False,A dark grey picture with white print,file.prefab
 Room 2,Picture 4,False,A light grey picture with black print,file.prefab
-Room 2,Statue 1,False,A simple white statue,file.prefab
