@@ -12,7 +12,7 @@ public class TutorialManager : MonoBehaviour {
     //Stage 3: Sphere prefabs are instantiated and sphere zapping video is played
     //Stage 4: Wait for spehres to be zapped
     //Stage 5: Instruction video on hand controller transporting is played
-    //Stage 6: Player transports are counted (4x)
+    //Stage 6: Player transports are counted (2x)
     //Stage 7: Video for transporting into insertion chamber is played
     //Stage 8: Door to chamber is opened and floor collider for chamber room is enabled
     //Stage 9: Grinnell College Moonbase Station video is displayed

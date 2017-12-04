@@ -17,10 +17,14 @@ public class CatalogButtonScript : MonoBehaviour {
     private UI_CatalogManager _catalogList;
     private Vector3 _room1pos;
     private Vector3 _room2pos;
+    private string _dataPath;
 
     // methods
     void Start ()
     {
+        //get data path
+        _dataPath = Application.dataPath;
+
         //populate catalog
         _thisButton = gameObject.GetComponent(typeof(Button)) as Button;
         _thisButton.GetComponentInChildren<Text>().text = resourceTitle;
@@ -43,8 +47,9 @@ public class CatalogButtonScript : MonoBehaviour {
         _catalogList.RefreshMenu();
 
         //instantiate artwork in room
-        Debug.Log("Just instantiated " + resourceTitle + " in " + roomNumber + ". " + "Art description: " + resourceDescription);
+        //Debug.Log("Just instantiated " + resourceTitle + " in " + roomNumber + ". " + "Art description: " + resourceDescription);
         string artPath = "Exhibition Rooms/" + roomNumber + "/" + resourceTitle;
+        Debug.Log(artPath);
         GameObject art = Instantiate(Resources.Load(artPath)) as GameObject;
         art.AddComponent<VRTK_InteractableObject>();
         art.AddComponent<VRTK_FixedJointGrabAttach>();

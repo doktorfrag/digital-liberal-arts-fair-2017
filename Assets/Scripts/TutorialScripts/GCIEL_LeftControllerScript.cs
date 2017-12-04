@@ -51,7 +51,6 @@ public class GCIEL_LeftControllerScript : MonoBehaviour
                 TutorialManager.Instance.SphereCount = -currentSphereCount;
                 TutorialManager.Instance.DoorOpen = false;
                 SceneManager.LoadScene("scene_01", LoadSceneMode.Single);
-                Debug.Log(TutorialManager.Instance.TutorialStage);
             }
         }
     }

@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
 
     //private variables
     private List<CatalogEntry> _catalog = new List<CatalogEntry>();
+    private string _dataPath;
 
     //private variable accessors
     private static GameController _gameControllerInstance;
@@ -36,6 +37,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         DontDestroyOnLoad(this.gameObject);
+        _dataPath = Application.dataPath;
     }
 
     //method to read in entire TXT file for catalog on initialization

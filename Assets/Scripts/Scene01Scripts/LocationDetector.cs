@@ -30,6 +30,12 @@ public class LocationDetector : MonoBehaviour
                 GameController.Instance.CurrentRoom = _currentRoom;
             }
 
+            if (hit.collider.name == "Ground")
+            {
+                //update GameController with current room
+                _currentRoom = null;
+                GameController.Instance.CurrentRoom = _currentRoom;
+            }
         }
     }
 }
